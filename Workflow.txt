@@ -1,0 +1,94 @@
+                         ┌─────────────────────┐
+                         │        USER         │
+                         │ Symptoms + Profile  │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │    NLP PROCESSING   │
+                         │ Extract Symptoms    │
+                         │ Normalize Text      │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │   HEALTH FEATURES   │
+                         │ Age • Duration      │
+                         │ Severity • Symptoms │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │    ML RISK MODEL    │
+                         │ Logistic Regression │
+                         │ Decision Tree / RF  │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │   RISK ASSESSMENT   │
+                         │ Low / Moderate /    │
+                         │ High / Urgent       │
+                         └──────────┬──────────┘
+                                    │
+                         ┌──────────┴──────────┐
+                         │                     │
+                         ▼                     ▼
+                 ┌───────────────┐     ┌────────────────┐
+                 │ SAFETY ENGINE │     │ EXPLANATION    │
+                 │ Red Flags     │     │ Why result?    │
+                 │ Safety Rules  │     │ Key features   │
+                 └───────┬───────┘     └───────┬────────┘
+                         │                     │
+              ┌──────────┴──────────┐          │
+              │                     │          │
+              ▼                     ▼          │
+        🚨 URGENT/RED FLAG       SAFE          │
+              │                     │          │
+              ▼                     ▼          │
+       No product              ┌───────────────┐│
+       recommendation          │ WELLNESS      ││
+              │                │ RECOMMENDER   ││
+              │                └───────┬───────┘│
+              │                        │        │
+              │                        ▼        │
+              │                ┌───────────────┐│
+              │                │ PRODUCT       ││
+              │                │ DATABASE      ││
+              │                │ Patanjali     ││
+              │                └───────┬───────┘│
+              │                        │        │
+              │                        ▼        │
+              │                ┌───────────────┐│
+              │                │ CONTENT-BASED ││
+              │                │ SIMILARITY    ││
+              │                │ + RANKING     ││
+              │                └───────┬───────┘│
+              │                        │        │
+              │                        ▼        │
+              │                ┌───────────────┐│
+              │                │ TOP 3         ││
+              │                │ WELLNESS      ││
+              │                │ PRODUCTS      ││
+              │                └───────┬───────┘│
+              │                        │        │
+              └────────────┬───────────┴────────┘
+                           ▼
+                 ┌─────────────────────┐
+                 │   FINAL RESULT PAGE │
+                 │                     │
+                 │ Risk Assessment     │
+                 │ Possible Conditions │
+                 │ Explanation         │
+                 │ What to Monitor     │
+                 │ Safety Guidance     │
+                 │ Wellness Products   │
+                 └──────────┬──────────┘
+                            │
+                            ▼
+                 ┌─────────────────────┐
+                 │      MONGODB        │
+                 │ Assessment History  │
+                 │ User Profile        │
+                 │ Product Data        │
+                 └─────────────────────┘
