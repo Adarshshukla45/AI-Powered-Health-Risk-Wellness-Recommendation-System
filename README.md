@@ -1,169 +1,327 @@
-# AI Health Risk & Wellness Recommendation System
+# ⭐ SwasthAI — AI-Powered Health Risk & Wellness Recommendation System
 
-> ⚠️ **Educational project — not a medical device.**
-> This application does not diagnose disease and does not replace a
-> qualified healthcare professional. See [Medical Safety Disclaimer](#medical-safety-disclaimer).
+SwasthAI is an AI/ML-powered healthcare project that analyzes user-provided symptoms and basic health information to estimate potential health-risk categories and provide personalized wellness guidance.
 
-Status: **Phase 1 of 15 — Architecture & Folder Structure** ✅
-(See [Development Roadmap](#development-roadmap) below.)
+The system combines **Natural Language Processing (NLP), Machine Learning, Explainable AI, and Content-Based Recommendation** to transform unstructured symptom descriptions into structured insights and relevant wellness-product recommendations.
 
-## Project Overview
-A final-year full-stack project that takes user-reported symptoms
-(natural language + structured fields), extracts and normalizes
-symptoms with NLP, estimates a **risk category** (not a diagnosis)
-with an interpretable ML model, explains which symptoms drove that
-estimate, applies a separate rule-based red-flag/urgency check, and
-— only when safe to do so — surfaces general wellness product
-*information* (never a prescription or cure claim).
+> ⚠️ **Disclaimer:** SwasthAI is an educational project and is not intended to diagnose diseases, prescribe medicines, or replace professional medical advice.
 
-## Architecture
+---
 
+## 🚀 Features
+
+* 🩺 **Natural Language Symptom Analysis**
+
+  * Users can describe symptoms in natural language.
+  * Extracts and normalizes relevant symptoms using NLP.
+
+* 🤖 **Machine Learning Health-Risk Prediction**
+
+  * Uses machine-learning classification models to estimate possible health-risk categories.
+  * Supports models such as Logistic Regression, Decision Tree, and Random Forest.
+
+* 🔍 **Explainable AI**
+
+  * Shows important symptoms/features that contributed to the model's prediction.
+  * Helps users understand how the model reached its result.
+
+* ⚠️ **Safety & Red-Flag Detection**
+
+  * Identifies potentially concerning symptom combinations.
+  * Prioritizes professional medical attention when appropriate.
+  * Prevents wellness-product recommendations in urgent scenarios.
+
+* 🛍️ **Content-Based Wellness Recommendation**
+
+  * Matches user wellness concerns with relevant products based on product characteristics, categories, and tags.
+  * Uses similarity-based ranking to generate relevant recommendations.
+  * Initially designed around a verified Patanjali wellness-product catalog.
+
+* 📊 **Assessment History**
+
+  * Users can view previous assessments and their results.
+
+* 🌐 **Hindi / English / Hinglish Support**
+
+  * Designed to accept natural-language symptom descriptions commonly used by Indian users.
+
+* 🔐 **Authentication**
+
+  * Secure user registration and login using JWT authentication.
+
+---
+
+## 🧠 System Architecture
+
+```text
+                    User
+                     │
+                     ▼
+             Symptom Description
+                     │
+                     ▼
+              NLP Processing
+                     │
+                     ▼
+          Structured Symptoms
+                     │
+             ┌───────┴────────┐
+             ▼                ▼
+       ML Risk Model     Product Retrieval
+             │                │
+             ▼                ▼
+       Risk Assessment   Similarity Search
+             │                │
+             └───────┬────────┘
+                     ▼
+              Safety Engine
+                     │
+                     ▼
+             Product Ranking
+                     │
+                     ▼
+          Personalized Results
 ```
- React (frontend)
-      │  Axios (JWT-authenticated requests)
-      ▼
- Node.js + Express (backend)
-      │  REST call
-      ▼
- Python FastAPI (ml-service)
-      │
-      ├── NLP symptom extraction (spaCy + normalization dictionary)
-      └── ML model (scikit-learn, joblib) ──▶ risk_level + possible_conditions
-      │
-      ▼
- Node.js (backend)
-      │  persists assessment, applies safety rules, fetches wellness
-      │  product info from MongoDB
-      ▼
- MongoDB (users, assessments, products)
-      │
-      ▼
- React (result page: risk summary, explanation, monitoring
-        guidance, wellness info, disclaimer)
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React.js
+* Vite
+* Tailwind CSS
+* Axios
+* React Router
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT
+
+### AI/ML
+
+* Python
+* Pandas
+* NumPy
+* Scikit-learn
+* NLP
+* TF-IDF
+* Cosine Similarity
+* Sentence Embeddings
+
+### ML Service
+
+* FastAPI
+* Joblib
+
+---
+
+## 🔬 Machine Learning Pipeline
+
+```text
+Dataset
+   ↓
+Data Cleaning
+   ↓
+Feature Engineering
+   ↓
+Symptom Encoding
+   ↓
+Train/Test Split
+   ↓
+Model Training
+   ↓
+Model Evaluation
+   ↓
+Model Selection
+   ↓
+FastAPI Prediction Service
 ```
 
-Two independent safety layers sit outside the ML model itself:
-1. **Red-flag rule engine** (ml-service/src/safety_rules.py) — decides
-   `URGENT` from explicit emergency-symptom rules, never from model
-   probability alone.
-2. **Recommendation safety gate** (backend) — blocks wellness product
-   suggestions whenever risk is `URGENT` or input is insufficient.
+The models are evaluated using:
 
-## Tech Stack
-| Layer | Technology |
-|---|---|
-| Frontend | React.js, Vite, Tailwind CSS, React Router, Axios, Recharts |
-| Backend | Node.js, Express.js, MongoDB, Mongoose, JWT |
-| ML Service | Python, FastAPI, pandas, NumPy, scikit-learn, joblib, spaCy |
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* Confusion Matrix
 
-## Folder Structure
+The project avoids relying on accuracy alone when evaluating health-related classification.
 
+---
+
+## 🛍️ Recommendation System
+
+SwasthAI uses a **Content-Based Recommendation approach**.
+
+Products are represented using attributes such as:
+
+```text
+Category
+Tags
+Description
+Ingredients
+Intended Use
+Warnings
 ```
-ai-health-risk-system/
+
+The user's wellness concern is converted into a structured representation and compared with product information.
+
+Example:
+
+```text
+User Concern
+    ↓
+Digestive Wellness
+    ↓
+Product Features
+    ↓
+Similarity Score
+    ↓
+Safety Filtering
+    ↓
+Top Recommendations
+```
+
+The recommendation score represents **relevance**, not the probability that a product will medically treat a condition.
+
+---
+
+## 🔎 Example
+
+### User Input
+
+```text
+"I have digestive discomfort and constipation."
+```
+
+### NLP Output
+
+```json
+{
+  "concerns": [
+    "digestive",
+    "constipation"
+  ]
+}
+```
+
+### Recommendation Pipeline
+
+```text
+Digestive + Constipation
+          ↓
+Digestive Wellness Category
+          ↓
+Product Retrieval
+          ↓
+Similarity Ranking
+          ↓
+Safety Filtering
+          ↓
+Top 3 Relevant Products
+```
+
+---
+
+## 📁 Project Structure
+
+```text
+SwasthAI/
+│
 ├── frontend/
 │   ├── src/
-│   │   ├── components/   # Navbar, Card, RiskBadge, ProductCard, etc.
-│   │   ├── pages/        # Landing, Login, Dashboard, Assessment, Result...
-│   │   ├── services/     # Axios API clients
-│   │   ├── hooks/        # custom React hooks
-│   │   ├── context/      # auth context / global state
-│   │   └── App.jsx
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── hooks/
 │   └── package.json
 │
 ├── backend/
-│   ├── controllers/      # request handlers
-│   ├── models/           # Mongoose schemas: User, Assessment, Product
-│   ├── routes/           # Express routers
-│   ├── middleware/       # auth, error handling, rate limiting
-│   ├── services/         # ML-service client, recommendation logic
-│   ├── config/           # db connection, env loading
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
 │   └── server.js
 │
 ├── ml-service/
-│   ├── data/              # dataset (raw/processed) — see Dataset section
-│   ├── models/            # model.pkl, symptom_encoder.pkl, feature_columns.pkl
-│   ├── notebooks/         # exploratory analysis / training notebooks
+│   ├── data/
+│   ├── models/
 │   ├── src/
 │   │   ├── preprocessing.py
+│   │   ├── nlp.py
 │   │   ├── train.py
 │   │   ├── predict.py
-│   │   ├── nlp.py
 │   │   └── safety_rules.py
-│   ├── main.py            # FastAPI app
+│   ├── main.py
 │   └── requirements.txt
 │
 ├── README.md
-├── .gitignore
-└── .env.example
+└── .gitignore
 ```
 
-## Installation
-_(Filled in as each service is built — Phases 4–9.)_
+---
 
-## Environment Variables
-See [`.env.example`](./.env.example) at the repo root. Copy the
-relevant section into `backend/.env`, `ml-service/.env`, and
-`frontend/.env`. Never commit real `.env` files.
+## 🔮 Future Improvements
 
-## Dataset
-_To be documented in Phase 2 — name, source, license, column
-meanings, and limitations will be recorded here **before** any
-training happens._
+* Multilingual NLP for major Indian languages
+* Better semantic symptom understanding using transformer models
+* Vector database for product retrieval
+* Hybrid recommendation system
+* Personalized recommendations based on user preferences
+* Improved explainability using SHAP
+* Additional verified wellness-product catalogs
+* Improved safety and validation mechanisms
+* Cloud deployment
+* Continuous model evaluation
 
-## ML Pipeline
-_Documented in Phase 2._
+---
 
-## API Documentation
-_Documented as each API is built (Phases 4–6, 11)._
+## ⚠️ Medical Disclaimer
 
-## Database Schema
-_Documented in Phase 6._
+SwasthAI is an educational and experimental AI/ML project.
 
-## How to Train the Model
-_Documented in Phase 2._
+It does **not** provide medical diagnosis, prescribe medication, or guarantee future health outcomes.
 
-## How to Run
-- Backend — _Phase 5_
-- Frontend — _Phase 8_
-- ML service — _Phase 4_
+The health-risk predictions are model-generated estimates and should not be treated as medical certainty.
 
-## Testing
-_Documented in Phase 13._
+Product recommendations are intended only as wellness/product information and are not treatment recommendations.
 
-## Limitations
-- The ML model estimates statistical association between reported
-  symptoms and risk categories in a training dataset. It is **not**
-  a diagnostic tool and has not been clinically validated.
-- Symptom self-report and NLP extraction are imperfect and may
-  miss or misinterpret symptoms.
-- Wellness product information is descriptive only and is never a
-  treatment or cure recommendation.
+Users experiencing severe, persistent, or concerning symptoms should seek advice from a qualified healthcare professional.
 
-## Medical Safety Disclaimer
-**This application is for educational and informational purposes
-only. It does not provide medical diagnosis or treatment. If
-symptoms are severe, persistent, or concerning, consult a qualified
-healthcare professional.**
+---
 
-## Future Improvements
-_Documented in later phases._
+## 👨‍💻 Project Goal
 
-## Development Roadmap
-| Phase | Scope | Status |
-|---|---|---|
-| 1 | Architecture + folder structure | ✅ Done |
-| 2 | Dataset selection + preprocessing + model training | ⏳ Next |
-| 3 | NLP symptom extraction | Pending |
-| 4 | FastAPI ML service | Pending |
-| 5 | Node.js + Express backend | Pending |
-| 6 | MongoDB integration | Pending |
-| 7 | Authentication | Pending |
-| 8 | React frontend shell | Pending |
-| 9 | Assessment UI | Pending |
-| 10 | Prediction result UI | Pending |
-| 11 | Wellness recommendation engine | Pending |
-| 12 | Dashboard / history | Pending |
-| 13 | Testing | Pending |
-| 14 | Security hardening | Pending |
-| 15 | Deployment | Pending |
-"# AI-Powered-Health-Risk-Wellness-Recommendation-System" 
+The goal of SwasthAI is to demonstrate how modern technologies such as **Machine Learning, NLP, Explainable AI, and Recommendation Systems** can be integrated into a full-stack application to create an intelligent and user-friendly health-assistance platform.
+
+---
+
+## 📚 Learning Areas
+
+This project demonstrates practical knowledge of:
+
+* Python
+* Data preprocessing
+* Machine Learning
+* Classification
+* NLP
+* Feature Engineering
+* Model Evaluation
+* Explainable AI
+* Recommendation Systems
+* Content-Based Filtering
+* Similarity Search
+* REST APIs
+* FastAPI
+* Node.js
+* Express.js
+* MongoDB
+* React.js
+* Authentication
+* Full-Stack AI Integration
