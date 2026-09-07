@@ -1,0 +1,33 @@
+# --- Node (frontend + backend) ---
+node_modules/
+dist/
+build/
+.env
+.env.local
+*.log
+npm-debug.log*
+
+# --- Python (ml-service) ---
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+
+# --- ML artifacts (trainable, not source) ---
+ml-service/models/*.pkl
+ml-service/data/raw/
+!ml-service/models/.gitkeep
+!ml-service/data/.gitkeep
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Misc ---
+coverage/
+*.tmp
