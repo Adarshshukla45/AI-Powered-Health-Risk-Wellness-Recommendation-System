@@ -1,3 +1,8 @@
+
+// test in backend
+
+// "Testing in the backend" means running automated checks that confirm the backend code (the Express server, login system, database logic) actually works correctly — without you having to manually click through the app every time you make a change.
+
 jest.mock("../models/User", () => ({
   findById: jest.fn(),
 }));
