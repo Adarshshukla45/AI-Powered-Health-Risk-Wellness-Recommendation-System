@@ -1,3 +1,13 @@
+# Project TrackRecord
+Backend - # Done
+Frontend - Pending
+Ml-Services - Pending
+Backend-ML Intergration - Pending
+Database configuration - Pending
+Testing - Pending
+Deployment - Pending
+
+
 # ⭐ SwasthAI — AI-Powered Health Risk & Wellness Recommendation System
 
 SwasthAI is an AI/ML-powered healthcare project that analyzes user-provided symptoms and basic health information to estimate potential health-risk categories and provide personalized wellness guidance.
