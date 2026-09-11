@@ -2,7 +2,7 @@
 
 ## 📌 Project Status
 
-- [Done] Backend
+- [x] Backend
 - [ ] Frontend
 - [ ] ML Services
 - [ ] Backend–ML Integration
