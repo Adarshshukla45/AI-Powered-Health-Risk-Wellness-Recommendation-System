@@ -1,11 +1,14 @@
 # Project TrackRecord
-Backend - # Done
-Frontend - Pending
-Ml-Services - Pending
-Backend-ML Intergration - Pending
-Database configuration - Pending
-Testing - Pending
-Deployment - Pending
+
+## 📌 Project Status
+
+- [Done] Backend
+- [ ] Frontend
+- [ ] ML Services
+- [ ] Backend–ML Integration
+- [ ] Database Configuration
+- [ ] Testing
+- [ ] Deployment
 
 
 # ⭐ SwasthAI — AI-Powered Health Risk & Wellness Recommendation System
