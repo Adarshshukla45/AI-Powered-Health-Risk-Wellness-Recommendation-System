@@ -11,7 +11,7 @@ const LABELS = {
   MODERATE: "Moderate",
   HIGH: "High",
   URGENT: "Urgent Attention",
-  INSUFFICIENT_INFO: "Insufficient Information",
+  INSUFFICIENT_INFO: "Insufficient Information !Please Fill Sufficient Data",
 };
 
 export default function RiskBadge({ level, size = "md" }) {
