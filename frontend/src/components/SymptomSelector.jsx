@@ -67,7 +67,7 @@ export default function SymptomSelector({ selected, onChange }) {
           </label>
         ))}
         {filtered.length === 0 && (
-          <p className="col-span-2 py-4 text-center text-sm text-slate-400">No matching symptoms found.</p>
+          <p className="col-span-2 py-4 text-center text-sm text-slate-400">no matching symptoms found.</p>
         )}
       </div>
     </div>
