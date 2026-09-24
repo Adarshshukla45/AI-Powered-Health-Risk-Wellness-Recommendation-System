@@ -1,0 +1,35 @@
+{
+  "model_version": "1.0.0",
+  "selected_model": "LogisticRegression",
+  "n_features": 131,
+  "n_classes": 41,
+  "comparison": [
+    {
+      "model": "LogisticRegression",
+      "accuracy": 1.0,
+      "precision_macro": 1.0,
+      "recall_macro": 1.0,
+      "f1_macro": 1.0,
+      "cv_f1_macro_mean": 1.0,
+      "cv_f1_macro_std": 0.0
+    },
+    {
+      "model": "DecisionTree",
+      "accuracy": 1.0,
+      "precision_macro": 1.0,
+      "recall_macro": 1.0,
+      "f1_macro": 1.0,
+      "cv_f1_macro_mean": 1.0,
+      "cv_f1_macro_std": 0.0
+    },
+    {
+      "model": "RandomForest",
+      "accuracy": 1.0,
+      "precision_macro": 1.0,
+      "recall_macro": 1.0,
+      "f1_macro": 1.0,
+      "cv_f1_macro_mean": 1.0,
+      "cv_f1_macro_std": 0.0
+    }
+  ]
+}
