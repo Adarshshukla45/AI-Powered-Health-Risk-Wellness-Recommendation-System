@@ -4,8 +4,8 @@
 
 - [x] Backend
 - [x] Frontend
-- [ ] ML Services
-- [ ] Backend–ML Integration
+- [x] ML Services
+- [x] Backend–ML Integration
 - [ ] Database Configuration
 - [ ] Testing
 - [ ] Deployment
