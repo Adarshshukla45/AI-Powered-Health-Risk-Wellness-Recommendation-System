@@ -43,7 +43,7 @@ export const SYMPTOMS = [
   { value: 'drying_and_tingling_lips', label: 'Drying And Tingling Lips' },
   { value: 'enlarged_thyroid', label: 'Enlarged Thyroid' },
   { value: 'excessive_hunger', label: 'Excessive Hunger' },
-  { value: 'extra_marital_contacts', label: 'Extra Marital Contacts' },
+  { value: 'extra_marital_contacts', label: 'Extra Marital ' },
   { value: 'family_history', label: 'Family History' },
   { value: 'fast_heart_rate', label: 'Fast Heart Rate' },
   { value: 'fatigue', label: 'Fatigue' },

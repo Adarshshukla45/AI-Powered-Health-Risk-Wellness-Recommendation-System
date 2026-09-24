@@ -11,7 +11,7 @@ const possibleConditionSchema = new mongoose.Schema(
 const assessmentSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true, index: true },
   symptoms: { type: [String], default: [] },
-  freeText: { type: String, maxlength: 2000 },
+  freeText: { type: String, maxlength: 3000 },
   age: { type: Number, min: 0, max: 120 },
   gender: { type: String, enum: ["male", "female", "other", "prefer_not_to_say"] },
   duration: { type: String }, // e.g. "3 days", collected as free text from the form

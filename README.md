@@ -3,7 +3,7 @@
 ## 📌 Project Status
 
 - [x] Backend
-- [ ] Frontend
+- [x] Frontend
 - [ ] ML Services
 - [ ] Backend–ML Integration
 - [ ] Database Configuration
