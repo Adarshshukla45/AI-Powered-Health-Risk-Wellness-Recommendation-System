@@ -4,7 +4,7 @@ const LINKS = [
   { to: "/dashboard", label: "Dashboard" },
   { to: "/assessment", label: "New Assessment" },
   { to: "/history", label: "History" },
-  { to: "/products", label: "Wellness Products" },
+  { to: "/products", label: "Products" },
   { to: "/profile", label: "Profile" },
 ];
 
