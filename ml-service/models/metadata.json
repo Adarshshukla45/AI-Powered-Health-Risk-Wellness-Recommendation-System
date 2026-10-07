@@ -14,6 +14,15 @@
       "cv_f1_macro_std": 0.0
     },
     {
+      "model": "LinearRegression",
+      "accuracy": 1.0,
+      "precision_macro": 1.0,
+      "recall_macro": 1.0,
+      "f1_macro": 1.0,
+      "cv_f1_macro_mean": 1.0,
+      "cv_f1_macro_std": 0.0
+    },
+    {
       "model": "DecisionTree",
       "accuracy": 1.0,
       "precision_macro": 1.0,
